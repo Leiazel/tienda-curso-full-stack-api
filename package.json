@@ -1,7 +1,7 @@
 {
   "name": "tienda-curso-full-stack-api",
   "version": "1.0.0",
-  "description": "Backend API con Node.js y Express para el proyecto tienda-curso-full-stack",
+  "description": "Backend REST API con Node.js, Express y MySQL para tienda de indumentaria urbana y calzado (DICH®)",
   "type": "module",
   "main": "src/server.js",
   "engines": {
@@ -10,20 +10,33 @@
   "scripts": {
     "start": "node src/server.js",
     "dev": "node --watch src/server.js",
+    "db:init": "node src/db/init.js",
+    "db:seed": "node src/db/seed.js",
+    "db:setup": "node src/db/init.js --seed",
     "test": "node --test tests/**/*.test.js"
   },
   "keywords": [
     "nodejs",
     "express",
+    "mysql",
+    "ecommerce",
+    "streetwear",
+    "footwear",
     "api",
     "rest",
     "cilsa"
   ],
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^3.0.3",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^5.1.0",
-    "helmet": "^8.1.0"
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.3",
+    "mysql2": "^3.24.6"
+  },
+  "devDependencies": {
+    "node-sql-parser": "^5.4.0"
   }
 }
