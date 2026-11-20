@@ -27,7 +27,7 @@ export function createApp({ db } = {}) {
   app.get('/', (_req, res) => {
     res.status(200).json({
       name: 'tienda-curso-full-stack-api',
-      brand: 'DICH® Streetwear & Footwear',
+      brand: 'L&D Streetwear & Footwear',
       status: 'running',
       health: '/api/health',
       api: '/api',

@@ -19,7 +19,7 @@ const VALID_ORDER_STATUSES = [
 
 function generateOrderNumber() {
   const randomDigits = crypto.randomInt(100000, 999999);
-  return `DICH-${randomDigits}`;
+  return `LD-${randomDigits}`;
 }
 
 function mapOrderRow(row, itemRows = []) {

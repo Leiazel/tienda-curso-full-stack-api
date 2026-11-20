@@ -57,7 +57,7 @@ describe('Auth, Newsletter, and Contacts API', () => {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        email: 'admin@dichstore.com',
+        email: 'admin@ldstore.com',
         password: 'Admin1234!',
       }),
     });
@@ -89,7 +89,7 @@ describe('Auth, Newsletter, and Contacts API', () => {
         customerEmail: 'valentina@example.com',
         shippingAddress: 'Av. Santa Fe 2100',
         shippingCity: 'CABA',
-        items: [{ slug: 'dich-cap-10', size: 'ONE SIZE', quantity: 1 }],
+        items: [{ slug: 'ld-cap-10', size: 'ONE SIZE', quantity: 1 }],
       }),
     });
     assert.equal(orderRes.status, 201);
@@ -183,7 +183,7 @@ describe('Auth, Newsletter, and Contacts API', () => {
         await fetch(`${baseUrl}/api/auth/login`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email: 'cliente@dichstore.com', password: 'Cliente1234!' }),
+          body: JSON.stringify({ email: 'cliente@ldstore.com', password: 'Cliente1234!' }),
         })
       ).json();
 
@@ -202,7 +202,7 @@ describe('Auth, Newsletter, and Contacts API', () => {
         await fetch(`${baseUrl}/api/auth/login`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email: 'admin@dichstore.com', password: 'Admin1234!' }),
+          body: JSON.stringify({ email: 'admin@ldstore.com', password: 'Admin1234!' }),
         })
       ).json();
 

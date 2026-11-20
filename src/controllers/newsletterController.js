@@ -8,7 +8,7 @@ export async function subscribe(req, res) {
   res.status(statusCode).json({
     message: result.alreadySubscribed
       ? 'Tu email ya formaba parte de la lista de drops.'
-      : `¡Bienvenido a DICH®! Usá el código "${result.promoCode}" para 15% OFF.`,
+      : `¡Bienvenido a L&D! Usá el código "${result.promoCode}" para 15% OFF.`,
     ...result,
   });
 }

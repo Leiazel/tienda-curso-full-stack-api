@@ -25,11 +25,11 @@ export function getEnvConfig() {
       port: Number(process.env.DB_PORT || '3306'),
       user: process.env.DB_USER || 'root',
       password: process.env.DB_PASSWORD ?? '',
-      database: process.env.DB_NAME || 'dich_store_db',
+      database: process.env.DB_NAME || 'ld_store_db',
       connectionLimit: Number(process.env.DB_CONNECTION_LIMIT || '10'),
     },
     jwt: {
-      secret: process.env.JWT_SECRET || 'dich_dev_secret_change_in_production',
+      secret: process.env.JWT_SECRET || 'ld_dev_secret_change_in_production',
       expiresIn: process.env.JWT_EXPIRES_IN || '7d',
     },
     protectAdminRoutes:

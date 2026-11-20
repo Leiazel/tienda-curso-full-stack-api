@@ -1,10 +1,10 @@
 -- ============================================================================
--- DICH® STREETWEAR & FOOTWEAR — DATOS INICIALES (SEED)
+-- L&D STREETWEAR & FOOTWEAR — DATOS INICIALES (SEED)
 -- Incluye indumentaria urbana, calzado urbano, variantes/tallaje,
 -- códigos promocionales y usuarios de prueba.
 -- ============================================================================
 
-USE dich_store_db;
+USE ld_store_db;
 
 SET NAMES utf8mb4;
 
@@ -36,14 +36,14 @@ INSERT INTO products (
 )
 VALUES
   (
-    'dich-hoodie-01',
-    'DICH-HD-01',
+    'ld-hoodie-01',
+    'LD-HD-01',
     (SELECT id FROM categories WHERE slug = 'hoodies' LIMIT 1),
     'apparel',
-    'DICH® BOXY HEAVYWEIGHT HOODIE',
+    'L&D BOXY HEAVYWEIGHT HOODIE',
     '480GSM Washed Black French Terry · Drop Shoulder',
-    'Cut in a boxy cropped silhouette from custom 480GSM organic French terry. Features vintage charcoal enzyme wash, double-lined hood, and puff-print DICH® chest branding.',
-    'DICH®',
+    'Cut in a boxy cropped silhouette from custom 480GSM organic French terry. Features vintage charcoal enzyme wash, double-lined hood, and puff-print L&D chest branding.',
+    'L&D',
     'unisex',
     '480GSM Organic French Terry Cotton',
     'Boxy Street Fit',
@@ -57,14 +57,14 @@ VALUES
     1
   ),
   (
-    'dich-cargo-02',
-    'DICH-CG-02',
+    'ld-cargo-02',
+    'LD-CG-02',
     (SELECT id FROM categories WHERE slug = 'pants' LIMIT 1),
     'apparel',
     'PARACHUTE CARGO PANTS V2',
     'Technical Cotton-Nylon Ripstop · 8 Utility Pockets',
     'Articulated knee pleats, adjustable ankle bungee toggles, and heavy-duty matte black hardware. Engineered for relaxed stacked draping over bulky sneakers.',
-    'DICH®',
+    'L&D',
     'unisex',
     'Technical Cotton-Nylon Ripstop',
     'Relaxed Stacked Fit',
@@ -78,14 +78,14 @@ VALUES
     1
   ),
   (
-    'dich-tee-03',
-    'DICH-TE-03',
+    'ld-tee-03',
+    'LD-TE-03',
     (SELECT id FROM categories WHERE slug = 'tees' LIMIT 1),
     'apparel',
     'ACID WASH GRAPHIC TEE',
     '300GSM Heavy Jersey · Brutalist Screenprint',
     'Sun-faded acid wash heavyweight cotton tee with thick high-ribbed collar and distressed neon-pink & white archive screenprint across chest and back.',
-    'DICH®',
+    'L&D',
     'unisex',
     '300GSM Combed Heavy Jersey',
     'Oversized Drop Shoulder',
@@ -99,14 +99,14 @@ VALUES
     1
   ),
   (
-    'dich-bomber-04',
-    'DICH-BM-04',
+    'ld-bomber-04',
+    'LD-BM-04',
     (SELECT id FROM categories WHERE slug = 'outerwear' LIMIT 1),
     'apparel',
     'DISTRESSED VARSITY BOMBER',
     'Heavyweight Twill & Chenille Patches · Quilted Lining',
-    'Oversized cropped varsity bomber jacket featuring hand-distressed rib trims, custom chenille DICH® emblems, two-way YKK® metal zipper, and satin diamond lining.',
-    'DICH®',
+    'Oversized cropped varsity bomber jacket featuring hand-distressed rib trims, custom chenille L&D emblems, two-way YKK® metal zipper, and satin diamond lining.',
+    'L&D',
     'unisex',
     'Heavyweight Cotton Twill & Satin Lining',
     'Oversized Cropped',
@@ -120,14 +120,14 @@ VALUES
     1
   ),
   (
-    'dich-sneaker-05',
-    'DICH-SN-05',
+    'ld-sneaker-05',
+    'LD-SN-05',
     (SELECT id FROM categories WHERE slug = 'sneakers' LIMIT 1),
     'footwear',
-    'DICH® LOW-TOP SNEAKER "CONCRETE"',
+    'L&D LOW-TOP SNEAKER "CONCRETE"',
     'Full-Grain Leather & Suede · Sculpted Cup Sole',
-    'Hand-lasted low-top skate & street silhouette crafted with supple full-grain leather, hairy suede overlays, padded fat tongue, and custom DICH® tread outsole.',
-    'DICH®',
+    'Hand-lasted low-top skate & street silhouette crafted with supple full-grain leather, hairy suede overlays, padded fat tongue, and custom L&D tread outsole.',
+    'L&D',
     'unisex',
     'Full-Grain Leather, Suede & Rubber Cup Sole',
     'True to Size',
@@ -141,14 +141,14 @@ VALUES
     1
   ),
   (
-    'dich-utility-06',
-    'DICH-UT-06',
+    'ld-utility-06',
+    'LD-UT-06',
     (SELECT id FROM categories WHERE slug = 'outerwear' LIMIT 1),
     'accessory',
     'UTILITY CROSSBODY BAG & BEANIE SET',
     'Cordura® Ballistic Sling + Ribbed Knit Beanie',
-    'Two-piece tactical street bundle pairing a weatherproof 1000D Cordura® crossbody pouch with a heavyweight fisherman knit beanie with woven DICH® label.',
-    'DICH®',
+    'Two-piece tactical street bundle pairing a weatherproof 1000D Cordura® crossbody pouch with a heavyweight fisherman knit beanie with woven L&D label.',
+    'L&D',
     'unisex',
     '1000D Ballistic Cordura® & Heavy Rib Knit',
     'Adjustable One Size',
@@ -162,14 +162,14 @@ VALUES
     1
   ),
   (
-    'dich-runner-07',
-    'DICH-RN-07',
+    'ld-runner-07',
+    'LD-RN-07',
     (SELECT id FROM categories WHERE slug = 'sneakers' LIMIT 1),
     'footwear',
-    'DICH® RUNNER 02 "ASPHALT"',
+    'L&D RUNNER 02 "ASPHALT"',
     'Suede & Technical Ripstop Mesh · Vibram-Style Midsole',
     'Zapatilla urbana de estética chunky runner con paneles de gamuza cepillada, malla respirable y entresuela de doble densidad diseñada para uso diario en asfalto.',
-    'DICH®',
+    'L&D',
     'unisex',
     'Suede, Ballistic Mesh & Dual-Density EVA',
     'True to Size',
@@ -183,14 +183,14 @@ VALUES
     1
   ),
   (
-    'dich-boot-08',
-    'DICH-BT-08',
+    'ld-boot-08',
+    'LD-BT-08',
     (SELECT id FROM categories WHERE slug = 'sneakers' LIMIT 1),
     'footwear',
-    'DICH® MONOLITH HIGH-TOP BOOT',
+    'L&D MONOLITH HIGH-TOP BOOT',
     'Matte Calfskin & Heavy Lug Outsole · Side Zip',
     'Bota urbana caña alta de silueta arquitectónica con cuero vacuno mate, cierre lateral YKK® metálico y suela tractor de alta tracción.',
-    'DICH®',
+    'L&D',
     'unisex',
     'Matte Full-Grain Calfskin & Vulcanized Rubber',
     'Relaxed Toe Box',
@@ -204,14 +204,14 @@ VALUES
     1
   ),
   (
-    'dich-denim-09',
-    'DICH-DN-09',
+    'ld-denim-09',
+    'LD-DN-09',
     (SELECT id FROM categories WHERE slug = 'pants' LIMIT 1),
     'apparel',
     'RAW SELVEDGE CARPENTER DENIM',
     '14oz Indigo Denim · Triple Stitch & Hammer Loop',
     'Jean carpenter de calce amplio en denim crudo de 14 onzas con doble rodilla reforzada, costuras en contraste y herrajes grabados.',
-    'DICH®',
+    'L&D',
     'unisex',
     '14oz 100% Cotton Raw Denim',
     'Baggy Wide Fit',
@@ -225,14 +225,14 @@ VALUES
     1
   ),
   (
-    'dich-cap-10',
-    'DICH-CP-10',
+    'ld-cap-10',
+    'LD-CP-10',
     (SELECT id FROM categories WHERE slug = 'accessories' LIMIT 1),
     'accessory',
-    'DICH® TECHNICAL 6-PANEL CAP',
+    'L&D TECHNICAL 6-PANEL CAP',
     'Water-Repellent Nylon · Embroidered Front Logo',
-    'Gorra urbana de 6 paneles en nylon técnico repelente al agua con visera precurvada, bordado DICH® en alta densidad y ajuste trasero con hebilla metálica.',
-    'DICH®',
+    'Gorra urbana de 6 paneles en nylon técnico repelente al agua con visera precurvada, bordado L&D en alta densidad y ajuste trasero con hebilla metálica.',
+    'L&D',
     'unisex',
     '100% Water-Repellent Technical Nylon',
     'Adjustable One Size',
@@ -251,6 +251,7 @@ ON DUPLICATE KEY UPDATE
   name = VALUES(name),
   subtitle = VALUES(subtitle),
   description = VALUES(description),
+  brand = VALUES(brand),
   material = VALUES(material),
   fit = VALUES(fit),
   price = VALUES(price),
@@ -267,63 +268,63 @@ ON DUPLICATE KEY UPDATE
 INSERT INTO product_variants (product_id, sku, size, color, color_hex, stock, is_active)
 VALUES
   -- Hoodie 01 (S, M, L, XL)
-  ((SELECT id FROM products WHERE slug = 'dich-hoodie-01' LIMIT 1), 'DICH-HD-01-BLK-S',  'S',  'Washed Black', '#141414', 6, 1),
-  ((SELECT id FROM products WHERE slug = 'dich-hoodie-01' LIMIT 1), 'DICH-HD-01-BLK-M',  'M',  'Washed Black', '#141414', 8, 1),
-  ((SELECT id FROM products WHERE slug = 'dich-hoodie-01' LIMIT 1), 'DICH-HD-01-BLK-L',  'L',  'Washed Black', '#141414', 9, 1),
-  ((SELECT id FROM products WHERE slug = 'dich-hoodie-01' LIMIT 1), 'DICH-HD-01-BLK-XL', 'XL', 'Washed Black', '#141414', 5, 1),
+  ((SELECT id FROM products WHERE slug = 'ld-hoodie-01' LIMIT 1), 'LD-HD-01-BLK-S',  'S',  'Washed Black', '#141414', 6, 1),
+  ((SELECT id FROM products WHERE slug = 'ld-hoodie-01' LIMIT 1), 'LD-HD-01-BLK-M',  'M',  'Washed Black', '#141414', 8, 1),
+  ((SELECT id FROM products WHERE slug = 'ld-hoodie-01' LIMIT 1), 'LD-HD-01-BLK-L',  'L',  'Washed Black', '#141414', 9, 1),
+  ((SELECT id FROM products WHERE slug = 'ld-hoodie-01' LIMIT 1), 'LD-HD-01-BLK-XL', 'XL', 'Washed Black', '#141414', 5, 1),
 
   -- Cargo Pants 02 (S, M, L, XL)
-  ((SELECT id FROM products WHERE slug = 'dich-cargo-02' LIMIT 1), 'DICH-CG-02-OLI-S',  'S',  'Olive Charcoal', '#2F332D', 4, 1),
-  ((SELECT id FROM products WHERE slug = 'dich-cargo-02' LIMIT 1), 'DICH-CG-02-OLI-M',  'M',  'Olive Charcoal', '#2F332D', 7, 1),
-  ((SELECT id FROM products WHERE slug = 'dich-cargo-02' LIMIT 1), 'DICH-CG-02-OLI-L',  'L',  'Olive Charcoal', '#2F332D', 5, 1),
-  ((SELECT id FROM products WHERE slug = 'dich-cargo-02' LIMIT 1), 'DICH-CG-02-OLI-XL', 'XL', 'Olive Charcoal', '#2F332D', 3, 1),
+  ((SELECT id FROM products WHERE slug = 'ld-cargo-02' LIMIT 1), 'LD-CG-02-OLI-S',  'S',  'Olive Charcoal', '#2F332D', 4, 1),
+  ((SELECT id FROM products WHERE slug = 'ld-cargo-02' LIMIT 1), 'LD-CG-02-OLI-M',  'M',  'Olive Charcoal', '#2F332D', 7, 1),
+  ((SELECT id FROM products WHERE slug = 'ld-cargo-02' LIMIT 1), 'LD-CG-02-OLI-L',  'L',  'Olive Charcoal', '#2F332D', 5, 1),
+  ((SELECT id FROM products WHERE slug = 'ld-cargo-02' LIMIT 1), 'LD-CG-02-OLI-XL', 'XL', 'Olive Charcoal', '#2F332D', 3, 1),
 
   -- Graphic Tee 03 (S, M, L, XL)
-  ((SELECT id FROM products WHERE slug = 'dich-tee-03' LIMIT 1), 'DICH-TE-03-ACD-S',  'S',  'Acid Charcoal', '#262626', 10, 1),
-  ((SELECT id FROM products WHERE slug = 'dich-tee-03' LIMIT 1), 'DICH-TE-03-ACD-M',  'M',  'Acid Charcoal', '#262626', 12, 1),
-  ((SELECT id FROM products WHERE slug = 'dich-tee-03' LIMIT 1), 'DICH-TE-03-ACD-L',  'L',  'Acid Charcoal', '#262626', 12, 1),
-  ((SELECT id FROM products WHERE slug = 'dich-tee-03' LIMIT 1), 'DICH-TE-03-ACD-XL', 'XL', 'Acid Charcoal', '#262626', 8, 1),
+  ((SELECT id FROM products WHERE slug = 'ld-tee-03' LIMIT 1), 'LD-TE-03-ACD-S',  'S',  'Acid Charcoal', '#262626', 10, 1),
+  ((SELECT id FROM products WHERE slug = 'ld-tee-03' LIMIT 1), 'LD-TE-03-ACD-M',  'M',  'Acid Charcoal', '#262626', 12, 1),
+  ((SELECT id FROM products WHERE slug = 'ld-tee-03' LIMIT 1), 'LD-TE-03-ACD-L',  'L',  'Acid Charcoal', '#262626', 12, 1),
+  ((SELECT id FROM products WHERE slug = 'ld-tee-03' LIMIT 1), 'LD-TE-03-ACD-XL', 'XL', 'Acid Charcoal', '#262626', 8, 1),
 
   -- Varsity Bomber 04 (S, M, L, XL)
-  ((SELECT id FROM products WHERE slug = 'dich-bomber-04' LIMIT 1), 'DICH-BM-04-BLK-S',  'S',  'Distressed Black', '#111111', 2, 1),
-  ((SELECT id FROM products WHERE slug = 'dich-bomber-04' LIMIT 1), 'DICH-BM-04-BLK-M',  'M',  'Distressed Black', '#111111', 4, 1),
-  ((SELECT id FROM products WHERE slug = 'dich-bomber-04' LIMIT 1), 'DICH-BM-04-BLK-L',  'L',  'Distressed Black', '#111111', 4, 1),
-  ((SELECT id FROM products WHERE slug = 'dich-bomber-04' LIMIT 1), 'DICH-BM-04-BLK-XL', 'XL', 'Distressed Black', '#111111', 2, 1),
+  ((SELECT id FROM products WHERE slug = 'ld-bomber-04' LIMIT 1), 'LD-BM-04-BLK-S',  'S',  'Distressed Black', '#111111', 2, 1),
+  ((SELECT id FROM products WHERE slug = 'ld-bomber-04' LIMIT 1), 'LD-BM-04-BLK-M',  'M',  'Distressed Black', '#111111', 4, 1),
+  ((SELECT id FROM products WHERE slug = 'ld-bomber-04' LIMIT 1), 'LD-BM-04-BLK-L',  'L',  'Distressed Black', '#111111', 4, 1),
+  ((SELECT id FROM products WHERE slug = 'ld-bomber-04' LIMIT 1), 'LD-BM-04-BLK-XL', 'XL', 'Distressed Black', '#111111', 2, 1),
 
   -- Low-Top Sneaker "Concrete" 05 (US 8 - US 12)
-  ((SELECT id FROM products WHERE slug = 'dich-sneaker-05' LIMIT 1), 'DICH-SN-05-CON-80',  'US 8',   'Concrete Crimson', '#D92B2B', 2, 1),
-  ((SELECT id FROM products WHERE slug = 'dich-sneaker-05' LIMIT 1), 'DICH-SN-05-CON-90',  'US 9',   'Concrete Crimson', '#D92B2B', 3, 1),
-  ((SELECT id FROM products WHERE slug = 'dich-sneaker-05' LIMIT 1), 'DICH-SN-05-CON-95',  'US 9.5', 'Concrete Crimson', '#D92B2B', 4, 1),
-  ((SELECT id FROM products WHERE slug = 'dich-sneaker-05' LIMIT 1), 'DICH-SN-05-CON-100', 'US 10',  'Concrete Crimson', '#D92B2B', 3, 1),
-  ((SELECT id FROM products WHERE slug = 'dich-sneaker-05' LIMIT 1), 'DICH-SN-05-CON-110', 'US 11',  'Concrete Crimson', '#D92B2B', 2, 1),
-  ((SELECT id FROM products WHERE slug = 'dich-sneaker-05' LIMIT 1), 'DICH-SN-05-CON-120', 'US 12',  'Concrete Crimson', '#D92B2B', 1, 1),
+  ((SELECT id FROM products WHERE slug = 'ld-sneaker-05' LIMIT 1), 'LD-SN-05-CON-80',  'US 8',   'Concrete Crimson', '#D92B2B', 2, 1),
+  ((SELECT id FROM products WHERE slug = 'ld-sneaker-05' LIMIT 1), 'LD-SN-05-CON-90',  'US 9',   'Concrete Crimson', '#D92B2B', 3, 1),
+  ((SELECT id FROM products WHERE slug = 'ld-sneaker-05' LIMIT 1), 'LD-SN-05-CON-95',  'US 9.5', 'Concrete Crimson', '#D92B2B', 4, 1),
+  ((SELECT id FROM products WHERE slug = 'ld-sneaker-05' LIMIT 1), 'LD-SN-05-CON-100', 'US 10',  'Concrete Crimson', '#D92B2B', 3, 1),
+  ((SELECT id FROM products WHERE slug = 'ld-sneaker-05' LIMIT 1), 'LD-SN-05-CON-110', 'US 11',  'Concrete Crimson', '#D92B2B', 2, 1),
+  ((SELECT id FROM products WHERE slug = 'ld-sneaker-05' LIMIT 1), 'LD-SN-05-CON-120', 'US 12',  'Concrete Crimson', '#D92B2B', 1, 1),
 
   -- Utility Bag & Beanie Set 06 (ONE SIZE)
-  ((SELECT id FROM products WHERE slug = 'dich-utility-06' LIMIT 1), 'DICH-UT-06-BLK-OS', 'ONE SIZE', 'Tactical Black', '#0A0A0A', 34, 1),
+  ((SELECT id FROM products WHERE slug = 'ld-utility-06' LIMIT 1), 'LD-UT-06-BLK-OS', 'ONE SIZE', 'Tactical Black', '#0A0A0A', 34, 1),
 
   -- Runner 02 "Asphalt" 07 (US 8 - US 12)
-  ((SELECT id FROM products WHERE slug = 'dich-runner-07' LIMIT 1), 'DICH-RN-07-ASP-80',  'US 8',   'Asphalt Grey', '#6E7275', 3, 1),
-  ((SELECT id FROM products WHERE slug = 'dich-runner-07' LIMIT 1), 'DICH-RN-07-ASP-90',  'US 9',   'Asphalt Grey', '#6E7275', 5, 1),
-  ((SELECT id FROM products WHERE slug = 'dich-runner-07' LIMIT 1), 'DICH-RN-07-ASP-95',  'US 9.5', 'Asphalt Grey', '#6E7275', 4, 1),
-  ((SELECT id FROM products WHERE slug = 'dich-runner-07' LIMIT 1), 'DICH-RN-07-ASP-100', 'US 10',  'Asphalt Grey', '#6E7275', 6, 1),
-  ((SELECT id FROM products WHERE slug = 'dich-runner-07' LIMIT 1), 'DICH-RN-07-ASP-110', 'US 11',  'Asphalt Grey', '#6E7275', 4, 1),
-  ((SELECT id FROM products WHERE slug = 'dich-runner-07' LIMIT 1), 'DICH-RN-07-ASP-120', 'US 12',  'Asphalt Grey', '#6E7275', 2, 1),
+  ((SELECT id FROM products WHERE slug = 'ld-runner-07' LIMIT 1), 'LD-RN-07-ASP-80',  'US 8',   'Asphalt Grey', '#6E7275', 3, 1),
+  ((SELECT id FROM products WHERE slug = 'ld-runner-07' LIMIT 1), 'LD-RN-07-ASP-90',  'US 9',   'Asphalt Grey', '#6E7275', 5, 1),
+  ((SELECT id FROM products WHERE slug = 'ld-runner-07' LIMIT 1), 'LD-RN-07-ASP-95',  'US 9.5', 'Asphalt Grey', '#6E7275', 4, 1),
+  ((SELECT id FROM products WHERE slug = 'ld-runner-07' LIMIT 1), 'LD-RN-07-ASP-100', 'US 10',  'Asphalt Grey', '#6E7275', 6, 1),
+  ((SELECT id FROM products WHERE slug = 'ld-runner-07' LIMIT 1), 'LD-RN-07-ASP-110', 'US 11',  'Asphalt Grey', '#6E7275', 4, 1),
+  ((SELECT id FROM products WHERE slug = 'ld-runner-07' LIMIT 1), 'LD-RN-07-ASP-120', 'US 12',  'Asphalt Grey', '#6E7275', 2, 1),
 
   -- Monolith High-Top Boot 08 (US 8 - US 12)
-  ((SELECT id FROM products WHERE slug = 'dich-boot-08' LIMIT 1), 'DICH-BT-08-BLK-80',  'US 8',  'Matte Black', '#0D0D0D', 2, 1),
-  ((SELECT id FROM products WHERE slug = 'dich-boot-08' LIMIT 1), 'DICH-BT-08-BLK-90',  'US 9',  'Matte Black', '#0D0D0D', 3, 1),
-  ((SELECT id FROM products WHERE slug = 'dich-boot-08' LIMIT 1), 'DICH-BT-08-BLK-100', 'US 10', 'Matte Black', '#0D0D0D', 3, 1),
-  ((SELECT id FROM products WHERE slug = 'dich-boot-08' LIMIT 1), 'DICH-BT-08-BLK-110', 'US 11', 'Matte Black', '#0D0D0D', 2, 1),
-  ((SELECT id FROM products WHERE slug = 'dich-boot-08' LIMIT 1), 'DICH-BT-08-BLK-120', 'US 12', 'Matte Black', '#0D0D0D', 1, 1),
+  ((SELECT id FROM products WHERE slug = 'ld-boot-08' LIMIT 1), 'LD-BT-08-BLK-80',  'US 8',  'Matte Black', '#0D0D0D', 2, 1),
+  ((SELECT id FROM products WHERE slug = 'ld-boot-08' LIMIT 1), 'LD-BT-08-BLK-90',  'US 9',  'Matte Black', '#0D0D0D', 3, 1),
+  ((SELECT id FROM products WHERE slug = 'ld-boot-08' LIMIT 1), 'LD-BT-08-BLK-100', 'US 10', 'Matte Black', '#0D0D0D', 3, 1),
+  ((SELECT id FROM products WHERE slug = 'ld-boot-08' LIMIT 1), 'LD-BT-08-BLK-110', 'US 11', 'Matte Black', '#0D0D0D', 2, 1),
+  ((SELECT id FROM products WHERE slug = 'ld-boot-08' LIMIT 1), 'LD-BT-08-BLK-120', 'US 12', 'Matte Black', '#0D0D0D', 1, 1),
 
   -- Raw Carpenter Denim 09 (S, M, L, XL)
-  ((SELECT id FROM products WHERE slug = 'dich-denim-09' LIMIT 1), 'DICH-DN-09-IND-S',  'S',  'Raw Indigo', '#1D2939', 4, 1),
-  ((SELECT id FROM products WHERE slug = 'dich-denim-09' LIMIT 1), 'DICH-DN-09-IND-M',  'M',  'Raw Indigo', '#1D2939', 6, 1),
-  ((SELECT id FROM products WHERE slug = 'dich-denim-09' LIMIT 1), 'DICH-DN-09-IND-L',  'L',  'Raw Indigo', '#1D2939', 5, 1),
-  ((SELECT id FROM products WHERE slug = 'dich-denim-09' LIMIT 1), 'DICH-DN-09-IND-XL', 'XL', 'Raw Indigo', '#1D2939', 3, 1),
+  ((SELECT id FROM products WHERE slug = 'ld-denim-09' LIMIT 1), 'LD-DN-09-IND-S',  'S',  'Raw Indigo', '#1D2939', 4, 1),
+  ((SELECT id FROM products WHERE slug = 'ld-denim-09' LIMIT 1), 'LD-DN-09-IND-M',  'M',  'Raw Indigo', '#1D2939', 6, 1),
+  ((SELECT id FROM products WHERE slug = 'ld-denim-09' LIMIT 1), 'LD-DN-09-IND-L',  'L',  'Raw Indigo', '#1D2939', 5, 1),
+  ((SELECT id FROM products WHERE slug = 'ld-denim-09' LIMIT 1), 'LD-DN-09-IND-XL', 'XL', 'Raw Indigo', '#1D2939', 3, 1),
 
   -- Technical 6-Panel Cap 10 (ONE SIZE)
-  ((SELECT id FROM products WHERE slug = 'dich-cap-10' LIMIT 1), 'DICH-CP-10-BLK-OS', 'ONE SIZE', 'Onyx Nylon', '#121212', 25, 1)
+  ((SELECT id FROM products WHERE slug = 'ld-cap-10' LIMIT 1), 'LD-CP-10-BLK-OS', 'ONE SIZE', 'Onyx Nylon', '#121212', 25, 1)
 ON DUPLICATE KEY UPDATE
   stock = VALUES(stock),
   color = VALUES(color),
@@ -335,7 +336,7 @@ ON DUPLICATE KEY UPDATE
 -- ----------------------------------------------------------------------------
 INSERT INTO promo_codes (code, description, discount_type, discount_value, min_order_amount, max_uses, is_active)
 VALUES
-  ('FIRST15', '15% de descuento en tu primera compra (DICH® Drop 04)', 'percentage', 15.00, 0.00, NULL, 1),
+  ('FIRST15', '15% de descuento en tu primera compra (L&D Drop 04)', 'percentage', 15.00, 0.00, NULL, 1),
   ('URBAN10', '10% de descuento en indumentaria urbana', 'percentage', 10.00, 50.00, 500, 1),
   ('SNEAKER20', '$20 de descuento en compras superiores a $150', 'fixed', 20.00, 150.00, 200, 1)
 ON DUPLICATE KEY UPDATE
@@ -352,8 +353,8 @@ INSERT INTO users (first_name, last_name, email, password_hash, phone, role, is_
 VALUES
   (
     'Admin',
-    'DICH',
-    'admin@dichstore.com',
+    'L&D',
+    'admin@ldstore.com',
     '$2b$10$z1TOMuLkMMg1jwltpov3k.u0Tl9O/35Op4H7lleB2FglaT90EmZyO',
     '+54 11 5555-0100',
     'admin',
@@ -362,7 +363,7 @@ VALUES
   (
     'Lucas',
     'Urbano',
-    'cliente@dichstore.com',
+    'cliente@ldstore.com',
     '$2b$10$ZeCDsZawmvM5laAlltICV.FhVzVRpn9no5u5cgOIv/4oqQkKfNYjS',
     '+54 11 5555-0199',
     'customer',

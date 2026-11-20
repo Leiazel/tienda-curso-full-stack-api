@@ -54,15 +54,15 @@ describe('Categories and Products API (urban apparel & footwear)', () => {
     assert.equal(res.status, 200);
     const body = await res.json();
     assert.equal(body.items.length, 2);
-    assert.equal(body.items[0].slug, 'dich-hoodie-01');
-    assert.equal(body.items[1].slug, 'dich-cargo-02');
+    assert.equal(body.items[0].slug, 'ld-hoodie-01');
+    assert.equal(body.items[1].slug, 'ld-cargo-02');
   });
 
   it('GET /api/products/:slug returns full product detail with variants and sizes', async () => {
-    const res = await fetch(`${baseUrl}/api/products/dich-sneaker-05`);
+    const res = await fetch(`${baseUrl}/api/products/ld-sneaker-05`);
     assert.equal(res.status, 200);
     const body = await res.json();
-    assert.equal(body.name, 'DICH® LOW-TOP SNEAKER "CONCRETE"');
+    assert.equal(body.name, 'L&D LOW-TOP SNEAKER "CONCRETE"');
     assert.equal(body.category, 'sneakers');
     assert.equal(body.defaultSize, 'US 9.5');
     assert.ok(body.variants.length >= 3);
@@ -74,7 +74,7 @@ describe('Categories and Products API (urban apparel & footwear)', () => {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        name: 'DICH® SKATE SLIP-ON PRO',
+        name: 'L&D SKATE SLIP-ON PRO',
         category: 'sneakers',
         productType: 'footwear',
         subtitle: 'Vulcanized Gum Sole · Heavy Canvas',
@@ -91,7 +91,7 @@ describe('Categories and Products API (urban apparel & footwear)', () => {
 
     assert.equal(createRes.status, 201);
     const created = await createRes.json();
-    assert.equal(created.slug, 'dich-skate-slip-on-pro');
+    assert.equal(created.slug, 'l-d-skate-slip-on-pro');
     assert.equal(created.totalStock, 12);
     assert.deepEqual(created.sizes, ['US 9', 'US 10']);
 

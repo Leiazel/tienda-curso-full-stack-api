@@ -13,7 +13,7 @@ const router = Router();
 router.get('/', (_req, res) => {
   res.status(200).json({
     name: 'tienda-curso-full-stack-api',
-    brand: 'DICH® Streetwear & Footwear',
+    brand: 'L&D Streetwear & Footwear',
     version: '1.0.0',
     endpoints: {
       health: 'GET /api/health',

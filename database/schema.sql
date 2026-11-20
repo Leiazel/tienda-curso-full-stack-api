@@ -1,13 +1,13 @@
 -- ============================================================================
--- DICH® STREETWEAR & FOOTWEAR — ESQUEMA DE BASE DE DATOS MYSQL 8.0+
+-- L&D STREETWEAR & FOOTWEAR — ESQUEMA DE BASE DE DATOS MYSQL 8.0+
 -- Tienda de Indumentaria Urbana y Calzado (Curso Full Stack - Fundación CILSA)
 -- ============================================================================
 
-CREATE DATABASE IF NOT EXISTS dich_store_db
+CREATE DATABASE IF NOT EXISTS ld_store_db
   CHARACTER SET utf8mb4
   COLLATE utf8mb4_unicode_ci;
 
-USE dich_store_db;
+USE ld_store_db;
 
 SET NAMES utf8mb4;
 
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS products (
   name VARCHAR(150) NOT NULL,
   subtitle VARCHAR(255) NULL,
   description TEXT NULL,
-  brand VARCHAR(80) NOT NULL DEFAULT 'DICH®',
+  brand VARCHAR(80) NOT NULL DEFAULT 'L&D',
   gender ENUM('unisex', 'men', 'women') NOT NULL DEFAULT 'unisex',
   material VARCHAR(150) NULL,
   fit VARCHAR(80) NULL,

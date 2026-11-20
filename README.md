@@ -1,6 +1,6 @@
 # tienda-curso-full-stack-api
 
-Backend REST API desarrollado con **Node.js**, **Express 5** (ESM) y **MySQL 8.0** para el proyecto de e-commerce de **indumentaria urbana y calzado** (**DICH® Streetwear & Footwear**) conectado con [tienda-curso-full-stack](https://github.com/Leiazel/tienda-curso-full-stack) (Curso de Desarrollo Full Stack - Fundación CILSA).
+Backend REST API desarrollado con **Node.js**, **Express 5** (ESM) y **MySQL 8.0** para el proyecto de e-commerce de **indumentaria urbana y calzado** (**L&D Streetwear & Footwear**) conectado con [tienda-curso-full-stack](https://github.com/Leiazel/tienda-curso-full-stack) (Curso de Desarrollo Full Stack - Fundación CILSA).
 
 ---
 
@@ -39,7 +39,7 @@ Variables disponibles en `.env`:
 | `DB_PORT` | Puerto de MySQL | `3306` |
 | `DB_USER` | Usuario de MySQL | `root` |
 | `DB_PASSWORD` | Contraseña de MySQL | *(vacío)* |
-| `DB_NAME` | Nombre de la base de datos | `dich_store_db` |
+| `DB_NAME` | Nombre de la base de datos | `ld_store_db` |
 | `DB_CONNECTION_LIMIT` | Máximo de conexiones simultáneas en el pool | `10` |
 | `JWT_SECRET` | Clave secreta para firmar tokens JWT | `cambia_esta_clave_secreta_en_produccion` |
 | `JWT_EXPIRES_IN` | Duración del token JWT | `7d` |
@@ -64,9 +64,9 @@ Esto levanta:
 Credenciales por defecto del contenedor Docker (`docker-compose.yml`):
 - `DB_HOST=127.0.0.1`
 - `DB_PORT=3306`
-- `DB_USER=dich_user`
-- `DB_PASSWORD=dich_password`
-- `DB_NAME=dich_store_db`
+- `DB_USER=ld_user`
+- `DB_PASSWORD=ld_password`
+- `DB_NAME=ld_store_db`
 
 #### Opción B — Con MySQL local / XAMPP / Laragon / MySQL Workbench
 
@@ -146,7 +146,7 @@ Base URL local: `http://localhost:3000` (y prefijo `/api` para todos los recurso
   - `?search=concrete`
   - `?sort=price_asc|price_desc|name|newest|featured`
   - `?page=1&limit=20`
-- `GET /api/products/:idOrSlug` — Detalle completo del producto con sus variantes y stock (ej: `/api/products/dich-sneaker-05`).
+- `GET /api/products/:idOrSlug` — Detalle completo del producto con sus variantes y stock (ej: `/api/products/ld-sneaker-05`).
 - `POST /api/products` — Crea un producto junto a sus variantes/talles iniciales en transacción.
 - `PUT /api/products/:id` — Actualiza un producto.
 - `DELETE /api/products/:id` — Desactiva un producto (`?hard=true` para borrado físico).
@@ -159,10 +159,10 @@ Base URL local: `http://localhost:3000` (y prefijo `/api` para todos los recurso
 - `POST /api/promo-codes` — Crea un nuevo código promocional.
 
 ### Órdenes y Checkout (`/api/orders`)
-- `POST /api/orders` — Crea una orden en **transacción MySQL**: bloquea variantes (`FOR UPDATE`), verifica y descuenta stock, valida cupón promocional, calcula totales en servidor y devuelve `orderNumber` (`DICH-XXXXXX`).
+- `POST /api/orders` — Crea una orden en **transacción MySQL**: bloquea variantes (`FOR UPDATE`), verifica y descuenta stock, valida cupón promocional, calcula totales en servidor y devuelve `orderNumber` (`LD-XXXXXX`).
 - `GET /api/orders` — Lista órdenes (`?status=confirmed`, `?email=...`, `?page=1&limit=20`).
 - `GET /api/orders/my-orders` — Lista órdenes del usuario autenticado (requiere Bearer JWT).
-- `GET /api/orders/:idOrNumber` — Consulta una orden por ID o número (ej: `/api/orders/DICH-482910`).
+- `GET /api/orders/:idOrNumber` — Consulta una orden por ID o número (ej: `/api/orders/LD-482910`).
 - `PATCH /api/orders/:id/status` — Cambia estado (`pending`, `confirmed`, `paid`, `shipped`, `delivered`, `cancelled`). Si se pasa a `cancelled`, **restaura el stock automáticamente**.
 
 ### Autenticación (`/api/auth`)
@@ -171,8 +171,8 @@ Base URL local: `http://localhost:3000` (y prefijo `/api` para todos los recurso
 - `GET /api/auth/me` — Devuelve perfil del usuario autenticado (`Authorization: Bearer <token>`).
 
 Cuentas iniciales del seed:
-- **Admin:** `admin@dichstore.com` / `Admin1234!`
-- **Cliente:** `cliente@dichstore.com` / `Cliente1234!`
+- **Admin:** `admin@ldstore.com` / `Admin1234!`
+- **Cliente:** `cliente@ldstore.com` / `Cliente1234!`
 
 ### Newsletter y Contacto
 - `POST /api/newsletter/subscribe` — Suscribe un email al drop list y devuelve el cupón `FIRST15`.
@@ -198,8 +198,8 @@ curl -X POST http://localhost:3000/api/orders \
     "paymentMethod": "mercadopago",
     "promoCode": "FIRST15",
     "items": [
-      { "slug": "dich-hoodie-01", "size": "L", "quantity": 1 },
-      { "slug": "dich-sneaker-05", "size": "US 9.5", "quantity": 1 }
+      { "slug": "ld-hoodie-01", "size": "L", "quantity": 1 },
+      { "slug": "ld-sneaker-05", "size": "US 9.5", "quantity": 1 }
     ]
   }'
 ```

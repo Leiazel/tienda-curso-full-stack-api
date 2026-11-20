@@ -1,7 +1,7 @@
 {
   "name": "tienda-curso-full-stack-api",
   "version": "1.0.0",
-  "description": "Backend REST API con Node.js, Express y MySQL para tienda de indumentaria urbana y calzado (DICH®)",
+  "description": "Backend REST API con Node.js, Express y MySQL para tienda de indumentaria urbana y calzado (L&D)",
   "type": "module",
   "main": "src/server.js",
   "engines": {

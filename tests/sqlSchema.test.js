@@ -67,7 +67,7 @@ describe('MySQL schema and seed files', () => {
     assert.match(rawSql, /'apparel'/);
     assert.match(rawSql, /'footwear'/);
     assert.match(rawSql, /'FIRST15'/);
-    assert.match(rawSql, /DICH® BOXY HEAVYWEIGHT HOODIE/);
-    assert.match(rawSql, /DICH® LOW-TOP SNEAKER/);
+    assert.match(rawSql, /L&D BOXY HEAVYWEIGHT HOODIE/);
+    assert.match(rawSql, /L&D LOW-TOP SNEAKER/);
   });
 });

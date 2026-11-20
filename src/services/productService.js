@@ -427,7 +427,7 @@ export async function createProduct(db, payload) {
         name,
         payload.subtitle ? String(payload.subtitle).trim() : null,
         payload.description ? String(payload.description).trim() : null,
-        payload.brand ? String(payload.brand).trim() : 'DICH®',
+        payload.brand ? String(payload.brand).trim() : 'L&D',
         gender,
         payload.material ? String(payload.material).trim() : null,
         payload.fit ? String(payload.fit).trim() : null,

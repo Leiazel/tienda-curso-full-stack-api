@@ -1,13 +1,13 @@
 services:
   mysql:
     image: mysql:8.0
-    container_name: dich_store_mysql
+    container_name: ld_store_mysql
     restart: unless-stopped
     environment:
-      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-dich_root_password}
-      MYSQL_DATABASE: ${DB_NAME:-dich_store_db}
-      MYSQL_USER: ${DB_USER:-dich_user}
-      MYSQL_PASSWORD: ${DB_PASSWORD:-dich_password}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-ld_root_password}
+      MYSQL_DATABASE: ${DB_NAME:-ld_store_db}
+      MYSQL_USER: ${DB_USER:-ld_user}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-ld_password}
     ports:
       - "${DB_PORT:-3306}:3306"
     volumes:
@@ -15,7 +15,7 @@ services:
       - ./database/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
       - ./database/seed.sql:/docker-entrypoint-initdb.d/02-seed.sql:ro
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${DB_ROOT_PASSWORD:-dich_root_password}"]
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${DB_ROOT_PASSWORD:-ld_root_password}"]
       interval: 10s
       timeout: 5s
       retries: 10
@@ -23,7 +23,7 @@ services:
 
   phpmyadmin:
     image: phpmyadmin:5
-    container_name: dich_store_phpmyadmin
+    container_name: ld_store_phpmyadmin
     restart: unless-stopped
     depends_on:
       mysql:

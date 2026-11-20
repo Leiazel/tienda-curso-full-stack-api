@@ -61,15 +61,15 @@ describe('Promo codes and transactional checkout orders API', () => {
         paymentMethod: 'mercadopago',
         promoCode: 'FIRST15',
         items: [
-          { slug: 'dich-hoodie-01', size: 'L', quantity: 1 }, // $110
-          { slug: 'dich-sneaker-05', size: 'US 9.5', quantity: 1 }, // $165
+          { slug: 'ld-hoodie-01', size: 'L', quantity: 1 }, // $110
+          { slug: 'ld-sneaker-05', size: 'US 9.5', quantity: 1 }, // $165
         ],
       }),
     });
 
     assert.equal(res.status, 201);
     const order = await res.json();
-    assert.match(order.orderNumber, /^DICH-\d{6}$/);
+    assert.match(order.orderNumber, /^LD-\d{6}$/);
     assert.equal(order.subtotal, 275);
     assert.equal(order.discountAmount, 41.25);
     assert.equal(order.total, 233.75);
@@ -77,11 +77,11 @@ describe('Promo codes and transactional checkout orders API', () => {
     assert.equal(order.items.length, 2);
 
     // Verifica descuento de stock en variantes
-    const hoodieProd = await (await fetch(`${baseUrl}/api/products/dich-hoodie-01`)).json();
+    const hoodieProd = await (await fetch(`${baseUrl}/api/products/ld-hoodie-01`)).json();
     const hoodieL = hoodieProd.variants.find((v) => v.size === 'L');
     assert.equal(hoodieL.stock, 8); // era 9
 
-    const sneakerProd = await (await fetch(`${baseUrl}/api/products/dich-sneaker-05`)).json();
+    const sneakerProd = await (await fetch(`${baseUrl}/api/products/ld-sneaker-05`)).json();
     const sneaker95 = sneakerProd.variants.find((v) => v.size === 'US 9.5');
     assert.equal(sneaker95.stock, 3); // era 4
 
@@ -101,12 +101,12 @@ describe('Promo codes and transactional checkout orders API', () => {
     const cancelled = await cancelRes.json();
     assert.equal(cancelled.status, 'cancelled');
 
-    const hoodieAfterCancel = await (await fetch(`${baseUrl}/api/products/dich-hoodie-01`)).json();
+    const hoodieAfterCancel = await (await fetch(`${baseUrl}/api/products/ld-hoodie-01`)).json();
     assert.equal(hoodieAfterCancel.variants.find((v) => v.size === 'L').stock, 9);
   });
 
   it('POST /api/orders rolls back transaction when any item lacks sufficient stock', async () => {
-    const beforeProd = await (await fetch(`${baseUrl}/api/products/dich-hoodie-01`)).json();
+    const beforeProd = await (await fetch(`${baseUrl}/api/products/ld-hoodie-01`)).json();
     const beforeHoodieStock = beforeProd.variants.find((v) => v.size === 'M').stock;
 
     const res = await fetch(`${baseUrl}/api/orders`, {
@@ -118,8 +118,8 @@ describe('Promo codes and transactional checkout orders API', () => {
         shippingAddress: 'Calle Falsa 123',
         shippingCity: 'Córdoba',
         items: [
-          { slug: 'dich-hoodie-01', size: 'M', quantity: 2 },
-          { slug: 'dich-sneaker-05', size: 'US 10', quantity: 99 }, // supera stock (2)
+          { slug: 'ld-hoodie-01', size: 'M', quantity: 2 },
+          { slug: 'ld-sneaker-05', size: 'US 10', quantity: 99 }, // supera stock (2)
         ],
       }),
     });
@@ -129,7 +129,7 @@ describe('Promo codes and transactional checkout orders API', () => {
     assert.equal(body.error, 'INSUFFICIENT_STOCK');
 
     // Confirma que el primer ítem NO perdió stock por el rollback transaccional
-    const afterProd = await (await fetch(`${baseUrl}/api/products/dich-hoodie-01`)).json();
+    const afterProd = await (await fetch(`${baseUrl}/api/products/ld-hoodie-01`)).json();
     const afterHoodieStock = afterProd.variants.find((v) => v.size === 'M').stock;
     assert.equal(afterHoodieStock, beforeHoodieStock);
   });
