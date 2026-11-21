@@ -63,6 +63,13 @@ describe('API base endpoints', () => {
     const body = await res.json();
     assert.equal(body.error, 'NOT_FOUND');
   });
+
+  it('GET /images/products/shoe-concrete.jpg serves static product image with cross-origin CORP', async () => {
+    const res = await fetch(`${baseUrl}/images/products/shoe-concrete.jpg`);
+    assert.equal(res.status, 200);
+    assert.match(res.headers.get('content-type') || '', /^image\/jpeg/);
+    assert.equal(res.headers.get('cross-origin-resource-policy'), 'cross-origin');
+  });
 });
 
 describe('Health strict mode with mock MySQL pool', () => {

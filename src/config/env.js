@@ -18,6 +18,7 @@ export function getEnvConfig() {
     nodeEnv: process.env.NODE_ENV || 'development',
     port,
     rawPort,
+    publicBaseUrl: (process.env.PUBLIC_BASE_URL || '').trim().replace(/\/+$/, ''),
     corsOrigin,
     allowedOrigins,
     db: {

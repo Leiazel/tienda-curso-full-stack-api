@@ -164,6 +164,23 @@ describe('Auth, Newsletter, and Contacts API', () => {
     assert.equal(patchRes.status, 200);
     const patchBody = await patchRes.json();
     assert.equal(patchBody.status, 'replied');
+
+    // También acepta un solo campo "name" (como el formulario actual de ContactPage.jsx)
+    const singleNameRes = await fetch(`${baseUrl}/api/contacts`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: 'Camila Torres',
+        email: 'camila@example.com',
+        subject: 'Talles y productos',
+        message: 'Hola! Quiero consultar por el talle US 9.5 disponible.',
+      }),
+    });
+    assert.equal(singleNameRes.status, 201);
+    const singleNameBody = await singleNameRes.json();
+    assert.equal(singleNameBody.contact.firstName, 'Camila');
+    assert.equal(singleNameBody.contact.lastName, 'Torres');
+    assert.equal(singleNameBody.contact.name, 'Camila Torres');
   });
 
   it('Admin route protection: rejects unauthenticated/customer when PROTECT_ADMIN_ROUTES=true and allows admin', async () => {

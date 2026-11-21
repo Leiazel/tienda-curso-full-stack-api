@@ -37,7 +37,18 @@ function mapVariantRow(row) {
   };
 }
 
-function formatProduct(row, variantRows = []) {
+function resolveImageUrl(url, baseUrl = '') {
+  if (!url || typeof url !== 'string') return url;
+  const trimmed = url.trim();
+  if (!trimmed) return trimmed;
+  if (/^https?:\/\//i.test(trimmed)) return trimmed;
+  if (trimmed.startsWith('/') && baseUrl) {
+    return `${baseUrl.replace(/\/+$/, '')}${trimmed}`;
+  }
+  return trimmed;
+}
+
+function formatProduct(row, variantRows = [], { baseUrl = '' } = {}) {
   const variants = variantRows.map(mapVariantRow);
   const activeVariants = variants.filter((v) => v.isActive);
   const sizes = [];
@@ -51,12 +62,17 @@ function formatProduct(row, variantRows = []) {
   }
 
   const totalStock = activeVariants.reduce((sum, v) => sum + v.stock, 0);
+  const resolvedImage = resolveImageUrl(row.image_url, baseUrl);
+  const resolvedGallery = parseJsonArray(row.gallery_urls).map((url) =>
+    resolveImageUrl(url, baseUrl)
+  );
 
   return {
     id: row.id,
     slug: row.slug,
     skuPrefix: row.sku_prefix,
     name: row.name,
+    title: row.name,
     subtitle: row.subtitle,
     description: row.description,
     brand: row.brand,
@@ -73,22 +89,23 @@ function formatProduct(row, variantRows = []) {
         ? Number(row.compare_at_price)
         : null,
     badge: row.badge,
-    image: row.image_url,
-    imageUrl: row.image_url,
-    galleryUrls: parseJsonArray(row.gallery_urls),
+    image: resolvedImage,
+    imageUrl: resolvedImage,
+    galleryUrls: resolvedGallery,
     defaultSize: row.default_size,
     sizes,
     totalStock,
     inStock: totalStock > 0,
     variants,
     isFeatured: Boolean(row.is_featured),
+    extra: !Boolean(row.is_featured),
     isActive: Boolean(row.is_active),
     createdAt: row.created_at,
     updatedAt: row.updated_at,
   };
 }
 
-async function attachVariants(db, productRows) {
+async function attachVariants(db, productRows, options = {}) {
   if (productRows.length === 0) return [];
   const productIds = productRows.map((p) => p.id);
   const placeholders = productIds.map(() => '?').join(', ');
@@ -109,10 +126,12 @@ async function attachVariants(db, productRows) {
     grouped.get(variant.product_id).push(variant);
   }
 
-  return productRows.map((product) => formatProduct(product, grouped.get(product.id) || []));
+  return productRows.map((product) =>
+    formatProduct(product, grouped.get(product.id) || [], options)
+  );
 }
 
-export async function listProducts(db, query = {}) {
+export async function listProducts(db, query = {}, options = {}) {
   const conditions = [];
   const params = [];
 
@@ -242,7 +261,7 @@ export async function listProducts(db, query = {}) {
     params
   );
 
-  const items = await attachVariants(db, productRows);
+  const items = await attachVariants(db, productRows, options);
 
   return {
     items,
@@ -255,7 +274,7 @@ export async function listProducts(db, query = {}) {
   };
 }
 
-export async function getProductByIdentifier(db, identifier) {
+export async function getProductByIdentifier(db, identifier, options = {}) {
   const isNumeric = /^\d+$/.test(String(identifier));
   const [rows] = await db.execute(
     `SELECT
@@ -273,7 +292,7 @@ export async function getProductByIdentifier(db, identifier) {
     throw new AppError(404, 'PRODUCT_NOT_FOUND', `Producto "${identifier}" no encontrado`);
   }
 
-  const [formatted] = await attachVariants(db, rows);
+  const [formatted] = await attachVariants(db, rows, options);
   return formatted;
 }
 
@@ -353,7 +372,7 @@ function normalizeVariantInput(variant, index, skuPrefix, defaultSize) {
   };
 }
 
-export async function createProduct(db, payload) {
+export async function createProduct(db, payload, options = {}) {
   const errors = [];
   const name = typeof payload?.name === 'string' ? payload.name.trim() : '';
   const slug = normalizeSlug(payload?.slug || name);
@@ -459,12 +478,12 @@ export async function createProduct(db, payload) {
     return productId;
   });
 
-  return getProductByIdentifier(db, createdId);
+  return getProductByIdentifier(db, createdId, options);
 }
 
-export async function updateProduct(db, id, payload) {
+export async function updateProduct(db, id, payload, options = {}) {
   const productId = parsePositiveInt(id, 'id');
-  const existing = await getProductByIdentifier(db, productId);
+  const existing = await getProductByIdentifier(db, productId, options);
 
   const updates = [];
   const params = [];
@@ -556,7 +575,7 @@ export async function updateProduct(db, id, payload) {
 
   params.push(productId);
   await db.execute(`UPDATE products SET ${updates.join(', ')} WHERE id = ?`, params);
-  return getProductByIdentifier(db, productId);
+  return getProductByIdentifier(db, productId, options);
 }
 
 export async function deleteProduct(db, id, { hard = false } = {}) {
@@ -572,7 +591,7 @@ export async function deleteProduct(db, id, { hard = false } = {}) {
   return { deleted: true, hard: false, id: productId };
 }
 
-export async function addProductVariant(db, productIdParam, payload) {
+export async function addProductVariant(db, productIdParam, payload, options = {}) {
   const productId = parsePositiveInt(productIdParam, 'productId');
   const product = await getProductByIdentifier(db, productId);
 
@@ -597,7 +616,7 @@ export async function addProductVariant(db, productIdParam, payload) {
     ]
   );
 
-  return getProductByIdentifier(db, productId);
+  return getProductByIdentifier(db, productId, options);
 }
 
 export async function updateVariantStock(db, productIdParam, variantIdParam, payload) {

@@ -9,8 +9,14 @@ import {
 const VALID_CONTACT_STATUSES = ['new', 'read', 'replied', 'archived'];
 
 function mapContactRow(row) {
+  const fullName =
+    row.last_name && row.last_name !== '-'
+      ? `${row.first_name} ${row.last_name}`
+      : row.first_name;
+
   return {
     id: row.id,
+    name: fullName,
     firstName: row.first_name,
     lastName: row.last_name,
     email: row.email,
@@ -24,8 +30,39 @@ function mapContactRow(row) {
 
 export async function createContactMessage(db, payload) {
   const errors = [];
-  const firstName = typeof payload?.firstName === 'string' ? payload.firstName.trim() : '';
-  const lastName = typeof payload?.lastName === 'string' ? payload.lastName.trim() : '';
+  const rawName = typeof payload?.name === 'string' ? payload.name.trim() : '';
+  const hasSeparateNames =
+    payload?.firstName !== undefined || payload?.lastName !== undefined;
+
+  let firstName = typeof payload?.firstName === 'string' ? payload.firstName.trim() : '';
+  let lastName = typeof payload?.lastName === 'string' ? payload.lastName.trim() : '';
+
+  if (!hasSeparateNames && rawName) {
+    if (!isValidPersonName(rawName)) {
+      errors.push({
+        field: 'name',
+        message: 'Nombre obligatorio (solo letras y mínimo 2 caracteres)',
+      });
+    } else {
+      const parts = rawName.split(/\s+/);
+      firstName = parts[0];
+      lastName = parts.slice(1).join(' ') || '-';
+    }
+  } else {
+    if (!isValidPersonName(firstName)) {
+      errors.push({
+        field: 'firstName',
+        message: 'Nombre obligatorio (solo letras y mínimo 2 caracteres)',
+      });
+    }
+    if (!isValidPersonName(lastName)) {
+      errors.push({
+        field: 'lastName',
+        message: 'Apellido obligatorio (solo letras y mínimo 2 caracteres)',
+      });
+    }
+  }
+
   const email = typeof payload?.email === 'string' ? payload.email.trim().toLowerCase() : '';
   const subject =
     typeof payload?.subject === 'string' && payload.subject.trim()
@@ -33,18 +70,6 @@ export async function createContactMessage(db, payload) {
       : 'Consulta general';
   const message = typeof payload?.message === 'string' ? payload.message.trim() : '';
 
-  if (!isValidPersonName(firstName)) {
-    errors.push({
-      field: 'firstName',
-      message: 'Nombre obligatorio (solo letras y mínimo 2 caracteres)',
-    });
-  }
-  if (!isValidPersonName(lastName)) {
-    errors.push({
-      field: 'lastName',
-      message: 'Apellido obligatorio (solo letras y mínimo 2 caracteres)',
-    });
-  }
   if (!isValidEmail(email)) {
     errors.push({ field: 'email', message: 'Email inválido' });
   }
