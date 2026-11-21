@@ -134,8 +134,8 @@ VALUES
     165.00,
     190.00,
     'AVAILABLE 15/250',
-    'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=85',
-    JSON_ARRAY('https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=85'),
+    '/images/products/shoe-concrete.jpg',
+    JSON_ARRAY('/images/products/shoe-concrete.jpg', '/images/products/sneakers-topdown.jpg'),
     'US 9.5',
     1,
     1
@@ -176,8 +176,8 @@ VALUES
     185.00,
     NULL,
     'NEW DROP 04',
-    'https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?auto=format&fit=crop&w=900&q=90',
-    JSON_ARRAY('https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?auto=format&fit=crop&w=900&q=90'),
+    '/images/products/shoe-mostro.jpg',
+    JSON_ARRAY('/images/products/shoe-mostro.jpg'),
     'US 10',
     1,
     1
@@ -197,8 +197,8 @@ VALUES
     220.00,
     250.00,
     'LIMITED 10/100',
-    'https://images.unsplash.com/photo-1608256246200-53e635b5b65f?auto=format&fit=crop&w=900&q=85',
-    JSON_ARRAY('https://images.unsplash.com/photo-1608256246200-53e635b5b65f?auto=format&fit=crop&w=900&q=85'),
+    '/images/products/shoe-xperks.jpg',
+    JSON_ARRAY('/images/products/shoe-xperks.jpg'),
     'US 10',
     0,
     1
@@ -258,6 +258,7 @@ ON DUPLICATE KEY UPDATE
   compare_at_price = VALUES(compare_at_price),
   badge = VALUES(badge),
   image_url = VALUES(image_url),
+  gallery_urls = VALUES(gallery_urls),
   default_size = VALUES(default_size),
   is_featured = VALUES(is_featured),
   is_active = VALUES(is_active);

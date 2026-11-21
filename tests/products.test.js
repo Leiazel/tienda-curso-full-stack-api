@@ -58,15 +58,40 @@ describe('Categories and Products API (urban apparel & footwear)', () => {
     assert.equal(body.items[1].slug, 'ld-cargo-02');
   });
 
-  it('GET /api/products/:slug returns full product detail with variants and sizes', async () => {
+  it('GET /api/products/:slug returns full product detail with variants, sizes, title and extra', async () => {
     const res = await fetch(`${baseUrl}/api/products/ld-sneaker-05`);
     assert.equal(res.status, 200);
     const body = await res.json();
     assert.equal(body.name, 'L&D LOW-TOP SNEAKER "CONCRETE"');
+    assert.equal(body.title, 'L&D LOW-TOP SNEAKER "CONCRETE"');
+    assert.equal(body.extra, false);
     assert.equal(body.category, 'sneakers');
     assert.equal(body.defaultSize, 'US 9.5');
     assert.ok(body.variants.length >= 3);
     assert.equal(body.totalStock, 9);
+  });
+
+  it('POST /api/products with relative /images/... path resolves full URL on response', async () => {
+    const createRes = await fetch(`${baseUrl}/api/products`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: 'L&D MOSTRO LOCAL IMG',
+        category: 'sneakers',
+        productType: 'footwear',
+        price: 245,
+        imageUrl: '/images/products/shoe-mostro.jpg',
+        defaultSize: 'US 9.5',
+      }),
+    });
+
+    assert.equal(createRes.status, 201);
+    const created = await createRes.json();
+    assert.equal(created.image, `${baseUrl}/images/products/shoe-mostro.jpg`);
+    assert.equal(created.imageUrl, `${baseUrl}/images/products/shoe-mostro.jpg`);
+    assert.deepEqual(created.galleryUrls, [`${baseUrl}/images/products/shoe-mostro.jpg`]);
+    assert.equal(created.title, 'L&D MOSTRO LOCAL IMG');
+    assert.equal(created.extra, true);
   });
 
   it('POST /api/products creates new footwear product with variants and updates stock', async () => {
